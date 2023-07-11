@@ -1,0 +1,14 @@
+section > div{
+     border-radius: 1em;
+     width: 50%;
+}
+.svgLogo svg{
+     width: 100px;
+     height: 150px;
+     fill: white;
+}
+@media (max-width: 768px){
+  section > div{
+     width: 100%;
+  }
+}
