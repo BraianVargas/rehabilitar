@@ -31,6 +31,10 @@ export class LoginComponent {
   onLogin(): void {
     this.loginService.login(this.loginUser).subscribe(
       data => {
+        this.isLogged = true;
+
+        this.tokenService.setToken(data.token)
+
         console.log(data)
       }
     )
