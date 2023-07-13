@@ -9,11 +9,11 @@ import { Token } from '../models/token';
 })
 export class LoginService {
 
-  loginURL = 'http://vctest.dyndns.org:8081/'
+  // loginURL = 'http://vctest.dyndns.org:8081/'
 
   constructor(private httpClient: HttpClient) { }
 
   public login(loginUser: LoginUser): Observable<Token> {
-    return this.httpClient.post<Token>(this.loginURL + 'login', loginUser)
+    return this.httpClient.post<Token>('/login', loginUser) // this.loginURL + 
   }
 }
