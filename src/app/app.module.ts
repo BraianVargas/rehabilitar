@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
 import { NavbarComponent } from './templates/navbar/navbar.component';
+import { IndexComponent } from './components/index/index.component';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { NavbarComponent } from './templates/navbar/navbar.component';
     AppComponent,
     LoginComponent,
     NavbarComponent,
+    IndexComponent,
   ],
   imports: [
     BrowserModule,
