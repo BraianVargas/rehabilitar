@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
 import { NavbarComponent } from './templates/navbar/navbar.component';
 import { IndexComponent } from './components/index/index.component';
+import { interceptorProvider } from './interceptor/auth-interceptor.service';
 
 
 @NgModule({

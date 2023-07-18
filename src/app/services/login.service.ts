@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpRequest } from '@angular/common/http'
+import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs'
 import { LoginUser } from '../models/login-user';
 import { Token } from '../models/token';
@@ -19,8 +19,8 @@ export class LoginService {
       'data': loginUser
     })
 
-    console.log( loginUser )
-    console.log(data)
+    // console.log( loginUser )
+    // console.log(data)
 
     return this.httpClient.post<Token>('/login', data, {
       headers: {
