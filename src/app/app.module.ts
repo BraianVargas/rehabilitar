@@ -9,6 +9,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { NavbarComponent } from './templates/navbar/navbar.component';
 import { IndexComponent } from './components/index/index.component';
 import { interceptorProvider } from './interceptor/auth-interceptor.service';
+import { PatientsComponent } from './components/patients/patients.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { interceptorProvider } from './interceptor/auth-interceptor.service';
     LoginComponent,
     NavbarComponent,
     IndexComponent,
+    PatientsComponent,
   ],
   imports: [
     BrowserModule,
