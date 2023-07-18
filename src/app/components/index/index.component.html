@@ -9,15 +9,19 @@
       <section class="p-0 p-md-3 m-auto" id="personalDataSection">
         <div class="m-auto row" id="search-section">
           <h3 class="pb-2 mb-2">Información del paciente</h3>
-          <div class="col-9 m-auto form-floating">
-            <input type="text" name="dni" id="floatingInputDni" class="form-control" placeholder="Ingrese su D.N.I">
-            <label for="floatingInputDni">Ingrese D.N.I</label>
-          </div>
-          <div class="col-3 m-auto">
-            <button class="btn btn-success">
-              <i class="bi bi-search"></i> Buscar
-            </button>
-          </div>
+
+          <form (ngSubmit)="buscarPacDNI( buscarDNIForm )" #buscarDNIForm="ngForm" novalidate>
+            <div class="col-9 m-auto form-floating">
+              <input type="text" class="form-control" placeholder="Ingrese su D.N.I" ngModel name="dni" id="floatingInputDni" required>
+              <label for="floatingInputDni">Ingrese D.N.I</label>
+            </div>
+            <div class="col-3 m-auto">
+              <button type="submit" class="btn btn-success">
+                <i class="bi bi-search"></i> Buscar
+              </button>
+            </div>
+          </form>
+
           <div class="container row m-auto my-4">
             <h3>Datos</h3>
             <div class="col-12 col-md-5 p-2">

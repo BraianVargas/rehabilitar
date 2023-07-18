@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginUser } from 'src/app/models/login-user';
 import { LoginService } from 'src/app/services/login.service';
@@ -13,7 +14,7 @@ export class LoginComponent {
 
   isLogged = false;
   loginUser: LoginUser;
-  userName: string = '';
+  username: string = '';
   password: string = '';
 
   constructor(
@@ -21,18 +22,29 @@ export class LoginComponent {
     private loginService: LoginService,
     private router: Router
   ) {
-    this.loginUser = new LoginUser(this.userName, this.password);
+    this.loginUser = new LoginUser(this.username, this.password);
   }
 
   ngOnInit() {
     
   }
 
-  onLogin(): void {
+  onLogin( loginForm: NgForm ): void {
+    this.loginUser.username = loginForm.value.userName;
+    this.loginUser.password = loginForm.value.password;
+    
     this.loginService.login(this.loginUser).subscribe(
       data => {
         console.log(data)
+
+        this.isLogged = true;
+
+        this.tokenService.setToken(data.token)
       }
     )
+
+    // console.log( this.loginUser )
+
+    // console.log( loginForm.value );
   }
 }

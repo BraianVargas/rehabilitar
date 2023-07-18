@@ -14,6 +14,19 @@ export class LoginService {
   constructor(private httpClient: HttpClient) { }
 
   public login(loginUser: LoginUser): Observable<Token> {
-    return this.httpClient.post<Token>('/login', loginUser) // this.loginURL + 
+
+    const data = JSON.stringify({
+      'data': loginUser
+    })
+
+    // console.log( loginUser )
+    // console.log(data)
+
+    return this.httpClient.post<Token>('/login', data, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
   }
+  
 }
