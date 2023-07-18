@@ -1,23 +1,56 @@
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-     Launch static backdrop modal
-   </button>
-   
-   <!-- Modal -->
-   <div class="fade modal-dialog modal-dialog-centered modal-dialog-scrollable" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-     <div class="modal-dialog">
-       <div class="modal-content">
-         <div class="modal-header">
-           <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
-           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-         </div>
-         <div class="modal-body">
-           ...
-         </div>
-         <div class="modal-footer">
-           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-           <button type="button" class="btn btn-primary">Understood</button>
-         </div>
-       </div>
-     </div>
-   </div>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#nuevaEmpresaModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="nuevaEmpresaModal"
+  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content bg-secondary">
+      <div class="modal-header bg-dark">
+        <h1 class="modal-title fs-5 text-white" id="nuevaEmpresaModalLabel">Cargar Nueva Empresa</h1>
+        <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body bg-color5">
+        <form>
+          <div class="mb-3">
+            <label for="cuit" class="col-form-label">Cuit:</label>
+            <input type="text" class="form-control" id="cuit" placeholder="20-12345678-1">
+          </div>
+          <div class="mb-3">
+            <label for="razonsocial" class="col-form-label">Razon Social:</label>
+            <input type="text" class="form-control" id="razonsocial" placeholder="Razon Social">
+          </div>
+          <div class="mb-3">
+            <label for="domicilio" class="col-form-label">Domicilio:</label>
+            <input type="text" class="form-control" id="domicilio" placeholder="Domicilio Real 123 (o)">
+          </div>
+          <div class="mb-3">
+            <label for="mail" class="col-form-label">Mail:</label>
+            <input type="mail" class="form-control" id="mail" placeholder="ejemplo@test.com">
+          </div>
+          <div class="mb-3">
+            <label for="telefono" class="col-form-label">Telefono:</label>
+            <input type="number" class="form-control" id="telefono" placeholder="264-1234567">
+          </div>
+          <div class="mb-3">
+            <label for="contacto" class="col-form-label">Contacto:</label>
+            <input type="text" class="form-control" id="contacto" placeholder="Contacto">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer bg-dark">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+          Cancelar
+          <i class="bi bi-x-circle"></i>
+        </button>
+        <button type="button" class="btn btn-success">
+          Guardar
+          <i class="bi bi-save"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

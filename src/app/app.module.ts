@@ -9,8 +9,10 @@ import { LoginComponent } from './auth/login/login.component';
 import { NavbarComponent } from './templates/navbar/navbar.component';
 import { IndexComponent } from './components/index/index.component';
 import { interceptorProvider } from './interceptor/auth-interceptor.service';
-import { PatientsComponent } from './components/patients/patients.component';
 import { NuevaEmpresaModalComponent } from './components/nueva-empresa-modal/nueva-empresa-modal.component';
+import { InfoPacientesComponent } from './components/info-pacientes/info-pacientes.component';
+import { InfoEmpresasComponent } from './components/info-empresas/info-empresas.component';
+import { UploadFileComponent } from './components/upload-file/upload-file.component';
 
 
 @NgModule({
@@ -19,8 +21,10 @@ import { NuevaEmpresaModalComponent } from './components/nueva-empresa-modal/nue
     LoginComponent,
     NavbarComponent,
     IndexComponent,
-    PatientsComponent,
-    NuevaEmpresaModalComponent
+    NuevaEmpresaModalComponent,
+    InfoPacientesComponent,
+    InfoEmpresasComponent,
+    UploadFileComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +32,7 @@ import { NuevaEmpresaModalComponent } from './components/nueva-empresa-modal/nue
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [interceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

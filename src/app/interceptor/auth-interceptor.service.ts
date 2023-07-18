@@ -3,35 +3,35 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { TokenService } from '../services/token.service';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class AuthInterceptorService implements HttpInterceptor {
 
   constructor(private tokenService: TokenService) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    console.log('1', req);
-
     const token = this.tokenService.getToken();
-    const reqBody = req.body;
-    console.log('2', reqBody)
-    const newBody = JSON.stringify({ 'token': token, reqBody });
-    // const newBody = JSON.parse( 'token:' + token );
-    console.log('3', newBody)
 
-    // const dict = JSON.parse(reqBody);
-    // console.log('!!', dict);
+    if (token != null && req.method === 'POST') {
+      // console.log('Token obtenido:', token);
+      // console.log(req.body[0]);
+      
+      const data = JSON.parse(req.body) // Convierte el texto obtenido en el request a JSON.
 
-    if (token != null) {
-      req = req.clone({ body: req.body.set('token' + token, reqBody) });
-      console.log('4', req);
+      // Clonar la solicitud y agregar el token al cuerpo
+      const modifiedReq = req.clone({
+        setHeaders: { 'Content-Type': 'application/json' }, // Indicar el tipo de contenido JSON
+        body: ({ data: data['data'], token: token}) // Agregar el token al cuerpo de la solicitud, se puede cambiar el orden. 
+      });
+      
+      console.log(modifiedReq);
+      
+      console.log("next: " + next.handle(modifiedReq));
+      
+      return next.handle(modifiedReq);
     }
 
-    return next.handle(req)
+    return next.handle(req);
   }
 }
 
-export const interceptorProvider = [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}]
-
-// AÑADIR interceptorProvider EN APPMODULE
+export const interceptorProvider = { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true };

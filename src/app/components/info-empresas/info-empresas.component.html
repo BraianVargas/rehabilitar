@@ -1,0 +1,32 @@
+<section class="px-3 m-auto" id="empresasDataSection">
+     <div class="m-auto row" id="search-section">
+       <h3 class="pb-2 mb-2">Información de la empresa</h3>
+       <div class="col-9 m-auto form-floating">
+         <input type="text" name="cuit" id="floatingInputCuit" class="form-control" placeholder="Ingrese su D.N.I">
+         <label for="floatingInputCuit">Ingrese CUIT</label>
+       </div>
+       <div class="col-3 m-auto">
+         <button class="btn btn-success">
+           <i class="bi bi-search"></i> Buscar
+         </button>
+       </div>
+       <div class="container row m-auto my-4">
+         <h3>Datos</h3>
+         <div class="col-12 col-md-5 p-2">
+           <label for=""><b>Cuit:</b> {{empresa.cuit}}</label>
+           <br>
+           <label for=""><b>Razon Social:</b> {{empresa.razonsocial}}</label>
+           <br>
+           <label for=""><b>Contacto:</b> {{empresa.contacto}} </label>
+         </div>
+         <div class="col-12 col-md-5 p-2">
+           <label for=""><b>Tel:</b> {{empresa.telefono}}</label>
+           <br>
+           <label for=""><b>Direccion:</b> {{empresa.domicilio}} </label>
+           <br>
+           <label for=""><b>Mail:</b> {{empresa.mail}} </label>
+         </div>
+         <hr class="pb-3 mt-1">
+       </div>
+     </div>
+   </section>

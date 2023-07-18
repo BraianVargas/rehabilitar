@@ -1,3 +1,6 @@
+
+<app-nueva-empresa-modal></app-nueva-empresa-modal>
+
 <div class="container m-auto pt-5 mt-5 d-block bg-color5 main-container">
     <div class="container">
       <div class="p-3">
@@ -6,121 +9,15 @@
       </div>
 
       <!-- Datos Pacientes -->
-      <section class="p-0 p-md-3 m-auto" id="personalDataSection">
-        <div class="m-auto row" id="search-section">
-          <h3 class="pb-2 mb-2">Información del paciente</h3>
-
-          <form (ngSubmit)="buscarPacDNI( buscarDNIForm )" #buscarDNIForm="ngForm" novalidate>
-            <div class="col-9 m-auto form-floating">
-              <input type="text" class="form-control" placeholder="Ingrese su D.N.I" ngModel name="dni" id="floatingInputDni" required>
-              <label for="floatingInputDni">Ingrese D.N.I</label>
-            </div>
-            <div class="col-3 m-auto">
-              <button type="submit" class="btn btn-success">
-                <i class="bi bi-search"></i> Buscar
-              </button>
-            </div>
-          </form>
-
-          <div class="container row m-auto my-4">
-            <h3>Datos</h3>
-            <div class="col-12 col-md-5 p-2">
-              <!-- <label for="">DNI: {{dataDNI}}</label> -->
-              <!-- <br> -->
-              <!-- <label for="">Nombre: {{dataName}}</label> -->
-              <label for=""><b>DNI:</b> 31523123</label>
-              <br>
-              <label for=""><b>Nombre:</b> Juan Perez</label>
-            </div>
-            <div class="col-12 col-md-5 p-2">
-              <!-- <label for="">Tel: {{dataTel}}</label>
-              <br>
-              <label for="">Direccion: {{dataAddress}}</label> -->
-              <label for=""><b>Tel:</b> +54 9 2645212521</label>
-              <br>
-              <label for=""><b>Direccion:</b> Mi casita s/n, Rawson.</label>
-            </div>
-            <hr class="pb-3 mt-1">
-          </div>
-        </div>
-      </section>
+      <app-info-pacientes></app-info-pacientes>
 
       <!-- Datos de la empresa -->
-      <section class="p-3 mt-0" id="empresasDataSection">
-        <div class="m-auto row" id="search-section">
-          <h3 class="pb-2 mb-2">Información de la empresa</h3>
-          <div class="col-9 m-auto form-floating">
-            <input type="text" name="cuit" id="floatingInputCuit" class="form-control" placeholder="Ingrese su D.N.I">
-            <label for="floatingInputCuit">Ingrese CUIT</label>
-          </div>
-          <div class="col-3 m-auto">
-            <button class="btn btn-success">
-              <i class="bi bi-search"></i> Buscar
-            </button>
-          </div>
-          <div class="container row m-auto my-4">
-            <h3>Datos</h3>
-            <div class="col-12 col-md-5 p-2">
-              <!-- <label for="">DNI: {{dataDNI}}</label> -->
-              <!-- <br> -->
-              <!-- <label for="">Nombre: {{dataName}}</label> -->
-              <label for=""><b>Cuit:</b> 20-31523123-8</label>
-              <br>
-              <label for=""><b>Razon Social:</b> Empresareal S.A</label>
-              <br>
-              <label for=""><b>Contacto:</b> Juan Perez</label>
-            </div>
-            <div class="col-12 col-md-5 p-2">
-              <!-- <label for="">Tel: {{dataTel}}</label>
-              <br>
-              <label for="">Direccion: {{dataAddress}}</label> -->
-              <label for=""><b>Tel:</b> 2645819065</label>
-              <br>
-              <label for=""><b>Direccion:</b> Mi casita s/n, Rawson.</label>
-              <br>
-              <label for=""><b>Mail:</b> example@empresareal.com</label>
-            </div>
-            <hr class="pb-3 mt-1">
-          </div>
-        </div>
-      </section>
-
+      <app-info-empresas></app-info-empresas>
+      
       <!-- Adjuntar Archivo -->
-      <section class="p-3" id="personalDataSection">
-        <div class="m-auto row" id="search-section">
-          <h3 class="pb-2 mb-2">Adjuntar Informe</h3>
-          <div class="col-9 m-auto">
-            <input type="file" name="dni" id="floatingInputDni" class="form-control" placeholder="Ingrese su D.N.I">
-          </div>
-          <div class="col-3 m-auto">
-            <button type="submit" class="btn btn-success">
-              <i class="bi bi-cloud-arrow-up"></i> Subir
-            </button>
-          </div>
-          <hr class="pb-3 mt-5">
-          <div class="container row m-auto my-4">
-            <div class="form-check col-12 col-md-6">
-              <input class="form-check-input" type="checkbox" value="" id="check-mail">
-              <label class="form-check-label" for="check-mail">
-                Enviar mail de aviso
-              </label>
-            </div>
-            <div class="form-check col-12 col-md-6 justify-content-end">
-              <button class="btn btn-success d-inline-block me-2">
-                <i class="bi bi-send"></i> Enviar
-              </button>
-              <button class="btn btn-danger d-inline-block me-2">
-                <i class="bi bi-x-circle"></i> Cancelar
-              </button>
-            </div>
-          </div>
-
-          
-        </div>
-      </section>
+      <app-upload-file></app-upload-file>
+      
     </div>
 </div>
 
 
-
-<app-nueva-empresa-modal></app-nueva-empresa-modal>
