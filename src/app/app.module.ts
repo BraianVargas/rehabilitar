@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
 import { NavbarComponent } from './templates/navbar/navbar.component';
 import { IndexComponent } from './components/index/index.component';
+import { NuevaEmpresaModalComponent } from './components/nueva-empresa-modal/nueva-empresa-modal.component';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { IndexComponent } from './components/index/index.component';
     LoginComponent,
     NavbarComponent,
     IndexComponent,
+    NuevaEmpresaModalComponent,
   ],
   imports: [
     BrowserModule,
