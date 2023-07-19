@@ -9,12 +9,14 @@ import { TokenService } from './token.service';
 })
 export class PatientService {
 
+  loginURL = 'http://vctest.dyndns.org:8081/'
+
   constructor(
     private httpClient: HttpClient,
     private tokenService: TokenService
     ) { }
 
-  public searchByDNI( dni: string ): Observable<Patient> {
+  public searchByDNI( dni: string ): Observable<any> {
 
     const token = this.tokenService.getToken();
     const data = JSON.stringify({
@@ -23,14 +25,29 @@ export class PatientService {
 
     console.log(data)
 
-    return this.httpClient.post<Patient>(`/pacientes/DNI/${dni}`, data, {
+    return this.httpClient.post<any>(this.loginURL + `/pacientes/DNI/${dni}`, data, {
       headers: {
         'Content-Type': 'application/json'
       }
-    })
+    });
   }
 
-  public seachById( id: number ) {}
+  public seachById( id: number ): Observable<Patient> {
+
+    const token = this.tokenService.getToken();
+    const data = JSON.stringify({
+      'token': token
+    })
+
+    console.log(data);
+    
+
+    return this.httpClient.post<Patient>(`/pacientes/${id}`, data, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+  }
 
   public toList() {}
 

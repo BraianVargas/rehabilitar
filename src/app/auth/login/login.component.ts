@@ -39,7 +39,9 @@ export class LoginComponent {
 
         this.isLogged = true;
 
-        this.tokenService.setToken(data.token)
+        this.tokenService.setToken(data.token);
+
+        this.router.navigate([ 'index' ]);
       }
     )
 

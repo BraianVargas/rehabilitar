@@ -32,7 +32,7 @@ import { UploadFileComponent } from './components/upload-file/upload-file.compon
     HttpClientModule,
     FormsModule
   ],
-  providers: [interceptorProvider],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

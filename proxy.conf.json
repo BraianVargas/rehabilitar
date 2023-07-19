@@ -1,5 +1,5 @@
 {
-    "/login": {
+    "/": {
         "target": "http://vctest.dyndns.org:8081",
         "secure": false,
         "logLevel": "debug"

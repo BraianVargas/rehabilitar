@@ -11,6 +11,7 @@ import { PatientService } from 'src/app/services/patient.service';
 export class InfoPacientesComponent {
   paciente = new Patient('','','','','',0,'','');
   dni:string = '';
+  id: number = 3;
 
   constructor(
     private patientService: PatientService
@@ -21,6 +22,14 @@ export class InfoPacientesComponent {
     // console.log('dni: ', this.dni);
 
     this.patientService.searchByDNI(this.dni).subscribe(
+      data => {
+        console.log(data);
+      }
+    )
+  }
+
+  buscarPacId() {
+    this.patientService.seachById(this.id).subscribe(
       data => {
         console.log(data);
       }
