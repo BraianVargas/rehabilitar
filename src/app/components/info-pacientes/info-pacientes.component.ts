@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Patient } from 'src/app/models/patient';
 import { PatientService } from 'src/app/services/patient.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-info-pacientes',
@@ -11,11 +13,20 @@ import { PatientService } from 'src/app/services/patient.service';
 export class InfoPacientesComponent {
   paciente = new Patient('','','','','',0,'','');
   dni:string = '';
-  id: number = 3;
+  id!: number;
+  info: boolean = false;
 
   constructor(
-    private patientService: PatientService
+    private token: TokenService,
+    private patientService: PatientService,
+    private router: Router
   ) {}
+
+  ngOnInit() {
+    if (!this.token.getToken()) {
+      this.router.navigate([ '/login' ])
+    }
+  }
 
   buscarPacDNI( buscarPacDNI: NgForm ) {
     this.dni = buscarPacDNI.value.dni;
@@ -28,11 +39,33 @@ export class InfoPacientesComponent {
     )
   }
 
-  buscarPacId() {
+  buscarPacId( buscarPacId: NgForm ) {
+    this.id = buscarPacId.value.id;
+    // this.paciente = buscarPacId.value;
+
+    console.log('buscarPacId', buscarPacId.value);
+    
+    
+    
+
     this.patientService.seachById(this.id).subscribe(
       data => {
-        console.log(data);
-      }
+        console.log('data: ', data);
+
+
+        this.paciente = data.data.listado[0];
+        console.log('paciente: ', this.paciente)
+        
+        
+        if (data != null) {
+          this.info = true;
+        }
+      },
+      // err => {
+      //   console.error( err );
+        
+      //   this.router.navigate([ '/login' ])
+      // }
     )
   }
 }

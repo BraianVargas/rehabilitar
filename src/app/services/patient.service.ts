@@ -32,7 +32,7 @@ export class PatientService {
     });
   }
 
-  public seachById( id: number ): Observable<Patient> {
+  public seachById( id: number ): Observable<any> {
 
     const token = this.tokenService.getToken();
     const data = JSON.stringify({
@@ -42,7 +42,7 @@ export class PatientService {
     console.log(data);
     
 
-    return this.httpClient.post<Patient>(`/pacientes/${id}`, data, {
+    return this.httpClient.post<any>(`/pacientes/${id}`, data, {
       headers: {
         'Content-Type': 'application/json'
       }
