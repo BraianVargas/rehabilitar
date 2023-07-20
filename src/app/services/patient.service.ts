@@ -25,7 +25,7 @@ export class PatientService {
 
     console.log(data)
 
-    return this.httpClient.post<any>(this.loginURL + `/pacientes/DNI/${dni}`, data, {
+    return this.httpClient.post<any>(this.loginURL + `/pacientes/dni/${dni}`, data, {
       headers: {
         'Content-Type': 'application/json'
       }
@@ -37,8 +37,7 @@ export class PatientService {
     const token = this.tokenService.getToken();
     const data = JSON.stringify({
       'token': token
-    })
-
+    });
     console.log(data);
     
 
@@ -49,7 +48,7 @@ export class PatientService {
     });
   }
 
-  public toList() {}
+  public searchAll() {}
 
   public newPatient( patient: Patient ) {}
 }
