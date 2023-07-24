@@ -28,7 +28,7 @@ export class InfoEmpresasComponent {
         this.empresa = data.data.listado[0]
         console.log('empresa: ', this.empresa);
 
-        this.showData();
+        this.showData(true);
         
         // if (data != null) {
         //   this.info = true;
@@ -47,7 +47,12 @@ export class InfoEmpresasComponent {
         this.empresa = data.data.listado[0]
         console.log('empresa: ', this.empresa);
 
-        this.showData();
+        if (this.empresa === undefined){
+          this.showData(false);
+        }else{
+          this.showData(true);
+        }
+
         
         
         // if (data != null) {
@@ -57,7 +62,7 @@ export class InfoEmpresasComponent {
     );
   }
 
-  showData() {
-    this.info = true;
+  showData(value: boolean) {
+    this.info = value;
   }
 }

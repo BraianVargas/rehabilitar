@@ -26,7 +26,17 @@ import { UploadFileComponent } from './components/upload-file/upload-file.compon
     InfoEmpresasComponent,
     UploadFileComponent
   ],
-  imports: [
+  exports: [
+    AppComponent,
+    LoginComponent,
+    NavbarComponent,
+    IndexComponent,
+    NuevaEmpresaModalComponent,
+    InfoPacientesComponent,
+    InfoEmpresasComponent,
+    UploadFileComponent
+  ],
+  imports:[
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,

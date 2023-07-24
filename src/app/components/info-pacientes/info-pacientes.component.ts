@@ -14,7 +14,7 @@ export class InfoPacientesComponent {
   paciente = new Patient('','','','','',0,'','');
   dni:string = '';
   id!: number;
-  info: boolean = false;
+  info: number = -1;
 
   constructor(
     private token: TokenService,
@@ -29,14 +29,25 @@ export class InfoPacientesComponent {
   }
 
   buscarPacDNI( buscarPacDNI: NgForm ) {
+
     this.dni = buscarPacDNI.value.dni;
+    
     // console.log('dni: ', this.dni);
 
     this.patientService.searchByDNI(this.dni).subscribe(
       data => {
         this.paciente = data.data.listado[0];
         console.log('paciente: ', this.paciente)
-        this.showData();
+        
+        if (this.paciente === null) {
+          this.showData(-1);
+        }else{
+          if(this.paciente === undefined){
+            this.showData(1);
+          }else{
+            this.showData(0);
+          }
+        }
       }
     )
   }
@@ -55,11 +66,16 @@ export class InfoPacientesComponent {
         this.paciente = data.data.listado[0];
         console.log('paciente: ', this.paciente)
         
-        this.showData();
 
-        // if (data != null) {
-        //   this.info = true;
-        // }
+        if (data == null) {
+          this.showData(-1);
+        }else{
+          if(data == undefined){
+            this.showData(1);
+          }else{
+            this.showData(0);
+          }
+        }
       },
       // err => {
       //   console.error( err );
@@ -69,7 +85,7 @@ export class InfoPacientesComponent {
     )
   }
 
-  showData() {
-    this.info = true;
+  showData(value: number) {
+    this.info = value;
   }
 }
