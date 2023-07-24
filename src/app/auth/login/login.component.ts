@@ -41,6 +41,8 @@ export class LoginComponent {
 
         this.tokenService.setToken(data.token);
 
+        this.loginService.inLogin();
+
         this.router.navigate([ 'index' ]);
       }
     )

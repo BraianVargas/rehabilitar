@@ -11,6 +11,8 @@ export class LoginService {
 
   // loginURL = 'http://vctest.dyndns.org:8081/'
 
+  isLogged: boolean = false;
+
   constructor(private httpClient: HttpClient) { }
 
   public login(loginUser: LoginUser): Observable<Token> {
@@ -27,6 +29,10 @@ export class LoginService {
         'Content-Type': 'application/json'
       }
     })
+  }
+
+  inLogin() {
+    this.isLogged = true;
   }
   
 }
