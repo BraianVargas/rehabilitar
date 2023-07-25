@@ -28,7 +28,13 @@ export class InfoEmpresasComponent {
         this.empresa = data.data.listado[0]
         console.log('empresa: ', this.empresa);
 
-        this.showData();
+        // this.showData();
+
+        if (this.empresa == undefined) {
+          console.log('UNDEFINED')
+        } else {
+          this.showData();
+        }
         
         // if (data != null) {
         //   this.info = true;
