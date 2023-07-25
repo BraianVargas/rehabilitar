@@ -7,13 +7,17 @@ import { CompanyService } from 'src/app/services/company.service';
   styleUrls: ['./upload-file.component.css']
 })
 export class UploadFileComponent {
-  info: boolean = false;
+  // info: boolean = false;
 
   constructor(
     private companyService: CompanyService
   ) {}
 
   ngOnInit() {
-    this.info = this.companyService.thereIsCompany;
+    // this.info = this.companyService.thereIsCompany;
+  }
+
+  subirArchivo() {
+    
   }
 }

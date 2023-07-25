@@ -7,12 +7,26 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CompanyService {
+  idEmpresa!: number;
+
   thereIsCompany: boolean = false;
 
   constructor(
     private httpClient: HttpClient,
     private token: TokenService
   ) { }
+
+  public getData(): string {
+    const data = JSON.stringify({
+      'empresa': this.idEmpresa
+    });
+
+    return data
+  }
+
+  public setData(idEmpresa: number): void {
+    this.idEmpresa = idEmpresa;
+  }
 
   public setCompany() {
     this.thereIsCompany = true;

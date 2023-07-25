@@ -3,7 +3,7 @@
        <h3 class="pb-2 mb-2">Información de la empresa</h3>
 
        <h5>Buscar por CUIT</h5>
-       <form class="row" (ngSubmit)="buscarEmpCuit( buscarCuitForm )" #buscarCuitForm="ngForm" novalidate>
+       <form class="row m-auto container" (ngSubmit)="buscarEmpCuit( buscarCuitForm )" #buscarCuitForm="ngForm" novalidate>
         <div class="col-9 m-auto form-floating">
           <input type="text" class="form-control" placeholder="Ingrese su D.N.I" ngModel name="cuit" id="floatingInputCuit" required>
           <label for="floatingInputCuit">Ingrese CUIT</label>
@@ -14,7 +14,7 @@
           </button>
         </div>
        </form>
-
+<!-- 
        <h5>Buscar por ID</h5>
        <form class="row" (ngSubmit)="buscarEmpId( buscarIdForm )" #buscarIdForm="ngForm" novalidate>
         <div class="col-9 m-auto form-floating">
@@ -26,9 +26,9 @@
             <i class="bi bi-search"></i> Buscar
           </button>
         </div>
-       </form>
+       </form> -->
 
-       <div class="container row m-auto my-4" *ngIf="info">
+       <div class="container row m-auto my-4" *ngIf="info; else elseBlock">
          <h3>Datos</h3>
          <div class="col-12 col-md-5 p-2">
            <label for=""><b>Cuit:</b> {{empresa.cuit}}</label>
@@ -44,11 +44,11 @@
            <br>
            <label for=""><b>Mail:</b> {{empresa.mail}} </label>
          </div>
-         <hr class="pb-3 mt-1">
        </div>
-
-       <app-nueva-empresa-modal></app-nueva-empresa-modal>
-       
+       <ng-template #elseBlock class="my-4">
+        <app-nueva-empresa-modal></app-nueva-empresa-modal>
+      </ng-template>
+      <hr class="pb-3 mt-1 m-auto my-4 container">
      </div>
    </section>
 

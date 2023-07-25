@@ -3,7 +3,7 @@
     <h3 class="pb-2 mb-2">Información del paciente</h3>
 
     <h5>Buscar por DNI</h5>
-    <form class="row" (ngSubmit)="buscarPacDNI( buscarDNIForm )" #buscarDNIForm="ngForm" novalidate>
+    <form class="row m-auto container" (ngSubmit)="buscarPacDNI( buscarDNIForm )" #buscarDNIForm="ngForm" novalidate>
       <div class="col-9 m-auto form-floating">
         <input type="text" class="form-control" placeholder="Ingrese su D.N.I" ngModel name="dni" id="floatingInputDni"
           required>
@@ -16,7 +16,7 @@
       </div>
     </form>
 
-    <h5>Buscar por ID</h5>
+    <!-- <h5>Buscar por ID</h5>
     <form class="row" (ngSubmit)="buscarPacId( buscarIdForm )" #buscarIdForm="ngForm" novalidate>
       <div class="col-9 m-auto form-floating">
         <input type="text" class="form-control" placeholder="Ingrese su ID" ngModel name="id" id="floatingInputId"
@@ -28,21 +28,38 @@
           <i class="bi bi-search"></i> Buscar
         </button>
       </div>
-    </form>
+    </form> -->
 
-    <div class="container row m-auto my-4" *ngIf="info">
-      <h3>Datos</h3>
-      <div class="col-12 col-md-5 p-2">
-        <label for=""><b>DNI:</b> {{paciente.documento}}</label>
-        <br>
-        <label for=""><b>Nombre:</b> {{paciente.nombres}}</label>
+
+    <div *ngIf="info === 0; then dataBlock else secondBlock" class="my-4"></div>
+    <ng-template #dataBlock>
+      <div class="container row m-auto my-4" *ngIf="info == 0">
+        <h3>Datos</h3>
+        <div class="col-12 col-md-5 p-2">
+          <label for=""><b>DNI:</b> {{paciente.documento}}</label>
+          <br>
+          <label for=""><b>Nombre:</b> {{paciente.nombres}}</label>
+        </div>
+        <div class="col-12 col-md-5 p-2">
+          <label for=""><b>Tel:</b> {{paciente.telefono}}</label>
+          <br>
+          <label for=""><b>Direccion:</b> {{paciente.domicilio}} </label>
+        </div>
       </div>
-      <div class="col-12 col-md-5 p-2">
-        <label for=""><b>Tel:</b> {{paciente.telefono}}</label>
-        <br>
-        <label for=""><b>Direccion:</b> {{paciente.domicilio}} </label>
+    </ng-template>
+    <ng-template #secondBlock>
+      <div *ngIf="info === 1" class="alert alert-danger my-4 w-50 m-auto" role="alert">
+        <p class="text-center m-auto">
+          No se encontró paciente
+        </p>
       </div>
-      <hr class="pb-3 mt-1">
-    </div>
+      <div *ngIf="info === -1" class="alert alert-info my-4 w-50 m-auto" role="alert">
+        <p class="text-center m-auto">
+          Por favor realice una busqueda
+        </p>
+      </div>
+    </ng-template>
+    
   </div>
+  <hr class="pb-3 mt-1 m-auto my-4 container">
 </section>

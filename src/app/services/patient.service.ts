@@ -8,6 +8,8 @@ import { TokenService } from './token.service';
   providedIn: 'root'
 })
 export class PatientService {
+  idPaciente!: number;
+  dni: string = '';
 
   loginURL = 'http://vctest.dyndns.org:8081/'
 
@@ -15,6 +17,20 @@ export class PatientService {
     private httpClient: HttpClient,
     private tokenService: TokenService
     ) { }
+
+  public getData(): string {
+    const data = JSON.stringify({
+      'paciente': this.idPaciente,
+      'DNI': this.dni
+    });
+
+    return data
+  }
+
+  public setData(idPaciente: number, dni: string): void {
+    this.idPaciente = idPaciente;
+    this.dni = dni;
+  }
 
   public searchByDNI( dni: string ): Observable<any> {
 
