@@ -46,6 +46,8 @@ export class InfoPacientesComponent {
             this.showData(1);
           }else{
             this.showData(0);
+
+            this.patientService.setData( this.paciente.id, this.paciente.documento );
           }
         }
       }

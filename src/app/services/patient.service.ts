@@ -19,10 +19,12 @@ export class PatientService {
     ) { }
 
   public getData(): string {
-    const data = JSON.stringify({
-      'paciente': this.idPaciente,
-      'DNI': this.dni
-    });
+    // const data = JSON.stringify({
+    //   'paciente': this.idPaciente,
+    //   'DNI': this.dni
+    // });
+
+    // convertir idPaciente a string
 
     return data
   }

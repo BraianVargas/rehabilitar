@@ -14,7 +14,16 @@ export class ReportService {
     private companyService: CompanyService
   ) { }
 
-  public fileUpload() {}
+  public fileUpload() {
+    const data = JSON.stringify({
+      'data': {
+        'paciente': this.patientService.getData(),
+        'empresa': this.companyService.getData()
+      }
+    });
+
+    console.log( data );
+  }
 
   public getFile() {}
 }

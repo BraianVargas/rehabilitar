@@ -51,6 +51,8 @@ export class InfoEmpresasComponent {
           this.showData(false);
         }else{
           this.showData(true);
+
+          this.companyService.setData( this.empresa.id );
         }
 
         
