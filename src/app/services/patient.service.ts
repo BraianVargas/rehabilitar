@@ -18,15 +18,21 @@ export class PatientService {
     private tokenService: TokenService
     ) { }
 
-  public getData(): string {
+  public getIdPaciente(): string {
     // const data = JSON.stringify({
-    //   'paciente': this.idPaciente,
-    //   'DNI': this.dni
-    // });
+    // //   'paciente': this.idPaciente,
+    // //   'DNI': this.dni
+    // // });
 
-    // convertir idPaciente a string
+    // const data = String(this.idPaciente) + ',\n' + this.dni;
 
-    return data
+    // // convertir idPaciente a string
+
+    return String(this.idPaciente)
+  }
+
+  public getDniPaciente(): string {
+    return this.dni
   }
 
   public setData(idPaciente: number, dni: string): void {

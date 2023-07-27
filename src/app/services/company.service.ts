@@ -16,12 +16,8 @@ export class CompanyService {
     private token: TokenService
   ) { }
 
-  public getData(): string {
-    const data = JSON.stringify({
-      'empresa': this.idEmpresa
-    });
-
-    return data
+  public getIdEmpresa(): string {
+    return String(this.idEmpresa)
   }
 
   public setData(idEmpresa: number): void {

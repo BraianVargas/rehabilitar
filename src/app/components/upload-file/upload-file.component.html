@@ -3,14 +3,16 @@
 
        <h3 class="pb-2 mb-2">Adjuntar Informe</h3>
        
-       <div class="col-9 m-auto">
-         <input type="file" name="dni" accept="application/pdf" id="floatingInputDni" class="form-control" placeholder="Ingrese su D.N.I">
-       </div>
-       <div class="col-3 m-auto">
-         <button type="submit" class="btn btn-success">
-           <i (click)="subirArchivo()" class="bi bi-cloud-arrow-up"></i> Subir
-         </button>
-       </div>
+       <form (ngSubmit)="subirArchivo()">
+        <div class="col-9 m-auto">
+          <input type="file" name="dni" accept="application/pdf" id="floatingInputDni" class="form-control" placeholder="Ingrese su D.N.I">
+        </div>
+        <div class="col-3 m-auto">
+          <button type="submit" class="btn btn-success">
+            <i class="bi bi-cloud-arrow-up"></i> Subir
+          </button>
+        </div>
+       </form>
 
        <hr class="pb-3 mt-5">
 
