@@ -13,6 +13,7 @@ import { NuevaEmpresaModalComponent } from './components/nueva-empresa-modal/nue
 import { InfoPacientesComponent } from './components/info-pacientes/info-pacientes.component';
 import { InfoEmpresasComponent } from './components/info-empresas/info-empresas.component';
 import { UploadFileComponent } from './components/upload-file/upload-file.component';
+import { NuevoPacienteModalComponent } from './components/nuevo-paciente-modal/nuevo-paciente-modal.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { UploadFileComponent } from './components/upload-file/upload-file.compon
     NuevaEmpresaModalComponent,
     InfoPacientesComponent,
     InfoEmpresasComponent,
-    UploadFileComponent
+    UploadFileComponent,
+    NuevoPacienteModalComponent
   ],
   exports: [
     AppComponent,
