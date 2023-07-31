@@ -3,16 +3,31 @@
 
        <h3 class="pb-2 mb-2">Adjuntar Informe</h3>
        
-       <form (ngSubmit)="subirArchivo()">
+       <!-- <form (ngSubmit)="subirArchivo()"> -->
+       <!-- <form [formGroup]="myForm">
         <div class="col-9 m-auto">
-          <input type="file" name="dni" accept="application/pdf" id="floatingInputDni" class="form-control" placeholder="Ingrese su D.N.I">
+          <input type="file" formControlName="document" name="dni" accept="application/pdf" id="floatingInputDni" class="form-control" placeholder="Ingrese su D.N.I">
         </div>
         <div class="col-3 m-auto">
           <button type="submit" class="btn btn-success">
             <i class="bi bi-cloud-arrow-up"></i> Subir
           </button>
         </div>
-       </form>
+       </form> -->
+
+       <div>
+        <div class="col-9 m-auto">
+          <input type="file" (change)="captureFile( $event )" name="dni" accept="application/pdf" id="floatingInputDni" placeholder="Ingrese su D.N.I">
+        </div>
+        <div class="col-3 m-auto">
+          <button type="button" class="btn btn-success" (click)="uploadFile()">
+            <i class="bi bi-cloud-arrow-up"></i> Subir
+          </button>
+        </div>
+      </div>
+
+       <!-- <input (change)="captureFile( $event )" type="file">
+       <button type="button" (click)="uploadFile()">Subir Archivo</button> -->
 
        <hr class="pb-3 mt-5">
 
