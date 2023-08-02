@@ -9,7 +9,10 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ReportService {
-  public archivo: any;
+  // private archivo: any;
+  private fileToken!: string;
+
+  baseURL = 'http://vctest.dyndns.org:8081'
 
   constructor(
     private httpClient: HttpClient,
@@ -18,8 +21,16 @@ export class ReportService {
     private tokenService: TokenService
   ) { }
 
-  public setArchivo( archivo: any ) {
-    this.archivo = archivo;
+  // public setArchivo( archivo: any ) {
+  //   this.archivo = archivo;
+  // }
+
+  public setFileToken( fileToken: string ): void {
+    this.fileToken = fileToken;
+  }
+
+  public getFileToken(): string {
+    return this.fileToken;
   }
 
   public uploadFile( formData: FormData ): Observable<any> {
@@ -66,5 +77,15 @@ export class ReportService {
   //   return this.httpClient.post<FormData>('/fileUpload', formData);
   // }
 
-  public getFile() {}
+  public downloadFile( fileToken: string ): Observable<any> {
+    // const token = this.tokenService.getToken();
+    // const data = JSON.stringify({
+    //   'token': token
+    // });
+    
+    return this.httpClient.get(this.baseURL + `/informes/${fileToken}`, {
+      responseType: 'blob',
+      observe: 'response'
+    });
+  }
 }

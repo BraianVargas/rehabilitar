@@ -31,9 +31,9 @@ export class UploadFileComponent {
   ngOnInit() {
     // this.info = this.companyService.thereIsCompany;
 
-    this.myForm = this.fb.nonNullable.group({
-      file: this.fb.nonNullable.group
-    });
+    // this.myForm = this.fb.nonNullable.group({
+    //   file: this.fb.nonNullable.group
+    // });
   }
 
   // subirArchivo() {
@@ -113,7 +113,8 @@ export class UploadFileComponent {
 
     this.reportService.uploadFile(formData2).subscribe({
       next: (data) => {
-        console.log(data);
+        console.log(data['data']['fileToken']);
+        this.reportService.setFileToken( data['data']['fileToken'] )
         
       },
       error: (err: HttpErrorResponse) => {
@@ -126,20 +127,4 @@ export class UploadFileComponent {
       }
     });
   }
-
-  // subirArchivo() {
-  //   // const formData = new FormData();
-  //   // formData.append('document', this.archivo);
-
-  //   // console.log( this.archivo );
-
-  //   this.reportService.uploadFile();
-
-  //   this.reportService.uploadFile().subscribe(
-  //     data => {
-  //       console.log( data );
-        
-  //     }
-  //   )
-  // }
 }
