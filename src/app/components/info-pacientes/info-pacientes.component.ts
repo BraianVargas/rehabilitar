@@ -32,12 +32,11 @@ export class InfoPacientesComponent {
 
     this.dni = buscarPacDNI.value.dni;
     
-    // console.log('dni: ', this.dni);
+  
 
     this.patientService.searchByDNI(this.dni).subscribe(
       data => {
         this.paciente = data.data.listado[0];
-        console.log('paciente: ', this.paciente)
         
         if (this.paciente === null) {
           this.showData(-1);
@@ -58,15 +57,12 @@ export class InfoPacientesComponent {
     this.id = buscarPacId.value.id;
     // this.paciente = buscarPacId.value;
 
-    console.log('buscarPacId', buscarPacId.value);
     
     this.patientService.seachById(this.id).subscribe(
       data => {
-        console.log('data: ', data);
 
 
         this.paciente = data.data.listado[0];
-        console.log('paciente: ', this.paciente)
         
 
         if (data == null) {

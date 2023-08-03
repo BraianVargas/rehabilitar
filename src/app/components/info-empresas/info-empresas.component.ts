@@ -12,59 +12,35 @@ export class InfoEmpresasComponent {
   empresa = new Empresas('','','','','','',0);
   id: number = 0;
   cuit: string = '';
-  info: boolean = false;
+  info: number = -1;
 
   constructor(
     private companyService: CompanyService
   ) {}
-
-  buscarEmpId( buscarEmpId: NgForm ) {
-    this.id = buscarEmpId.value.id;
-
-    this.companyService.searchById(this.id).subscribe(
-      data => {
-        console.log(data);
-
-        this.empresa = data.data.listado[0]
-        console.log('empresa: ', this.empresa);
-
-        this.showData(true);
-        
-        // if (data != null) {
-        //   this.info = true;
-        // }
-      }
-    );
-  }
 
   buscarEmpCuit( buscarEmpCuit: NgForm ) {
     this.cuit = buscarEmpCuit.value.cuit;
 
     this.companyService.searchByCuit(this.cuit).subscribe(
       data => {
-        console.log(data);
-
         this.empresa = data.data.listado[0]
-        console.log('empresa: ', this.empresa);
-
-        if (this.empresa === undefined){
-          this.showData(false);
+        
+        if (this.empresa === null){
+          this.showData(-1);
         }else{
-          this.showData(true);
-
+          if(this.empresa === undefined){
+            this.showData(1);
+          }else{
+            this.showData(0);
+          }
           this.companyService.setData( this.empresa.id );
         }
-
-        
-        
-        // if (data != null) {
-        //   this.info = true;
-        // }
       }
     );
   }
 
-  showData(value: boolean) {
+  showData(value: number) {
     this.info = value;
   }
 }
+

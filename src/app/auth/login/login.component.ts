@@ -16,6 +16,7 @@ export class LoginComponent {
   loginUser: LoginUser;
   username: string = '';
   password: string = '';
+  activateButton = false;
 
   constructor(
     private tokenService: TokenService,
@@ -35,8 +36,6 @@ export class LoginComponent {
     
     this.loginService.login(this.loginUser).subscribe(
       data => {
-        console.log(data)
-
         this.isLogged = true;
 
         this.tokenService.setToken(data.token);
@@ -44,11 +43,12 @@ export class LoginComponent {
         this.loginService.inLogin();
 
         this.router.navigate([ 'home/index' ]);
-      }
+      },
+      error =>{
+        this.isLogged = false;
+        this.activateButton = true;
+      }      
     )
-
-    // console.log( this.loginUser )
-
-    // console.log( loginForm.value );
+      
   }
 }

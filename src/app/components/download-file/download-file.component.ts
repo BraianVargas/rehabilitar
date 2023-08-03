@@ -14,6 +14,10 @@ export class DownloadFileComponent {
   constructor(
     private reportService: ReportService
   ) {}
+  
+  
+
+
 
   downloadFile( event: any ): void {
     const fileToken: string = this.reportService.getFileToken();

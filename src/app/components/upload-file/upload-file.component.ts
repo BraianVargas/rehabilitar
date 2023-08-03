@@ -19,6 +19,8 @@ export class UploadFileComponent {
   public files!: FileList | null;
 
   myForm!: FormGroup;
+  uploadComplete = false;
+  downloadFileLink = '';
 
   constructor(
     private companyService: CompanyService,
@@ -29,62 +31,12 @@ export class UploadFileComponent {
   ) {}
 
   ngOnInit() {
-    // this.info = this.companyService.thereIsCompany;
-
-    // this.myForm = this.fb.nonNullable.group({
-    //   file: this.fb.nonNullable.group
-    // });
   }
 
-  // subirArchivo() {
-  //   this.reportService.fileUpload();
-  // }
-
   captureFile( event: any ) {
-    // const data = JSON.stringify({
-    //   'token': this.tokenService.getToken(),
-    //   'data': {
-    //     'paciente': this.patientService.getIdPaciente(),
-    //     'DNI': this.patientService.getDniPaciente(),
-    //     'empresa': this.companyService.getIdEmpresa()
-    //   }
-    // });
-
-    // const document = event.target.files[0];
     const document2 = event.target as HTMLInputElement;
 
     this.files = document2.files;
-
-    // if( files!.length > 0 && files != null ) {
-    //   const formData2 = new FormData();
-
-    //   Array.prototype.forEach.call( files, (file: File) => {
-    //     formData2.append('document', file);
-    //   } );
-
-    //   formData2.append('json', data);
-
-    //   this.reportService.fileUpload(formData2).subscribe({
-    //     next: (data) => {
-    //       console.log(data);
-          
-    //     },
-    //     error: (err: HttpErrorResponse) => {
-    //       console.log(err);
-          
-    //     },
-    //     complete: () => {
-    //       console.log('Se completó la tarea');
-          
-    //     }
-    //   });
-    // }
-    
-    // console.log( event.target.files );
-
-    // // this.archivos.push(document);
-    // this.archivo = document;
-    // this.reportService.setArchivo( document );
   }
 
   uploadFile() {
@@ -105,26 +57,28 @@ export class UploadFileComponent {
 
     formData2.append('json', data);
 
-    console.log(this.files);
-    console.log('-----------------------');
-    
-    console.log(data);
-    
-
     this.reportService.uploadFile(formData2).subscribe({
       next: (data) => {
-        console.log(data['data']['fileToken']);
         this.reportService.setFileToken( data['data']['fileToken'] )
-        
       },
       error: (err: HttpErrorResponse) => {
         console.log(err);
         
       },
       complete: () => {
-        console.log('Se completó la tarea');
-        
+        this.downloadFileLink = 'http://vctest.dyndns.org:8081/informes/' + this.reportService.getFileToken();
+        this.uploadComplete = true;
       }
     });
+  }
+
+  
+  copiarTexto(): void {
+    const fileLink = document.getElementById('fileLink') as HTMLInputElement;
+    
+    if (fileLink) {
+      fileLink.select();
+      document.execCommand('copy');
+    }
   }
 }

@@ -1,57 +1,55 @@
 <section class="px-3 m-auto mb-2" id="empresasDataSection">
-     <div class="m-auto row" id="search-section">
-       <h3 class="pb-2 mb-2">Información de la empresa</h3>
-
-       <h5>Buscar por CUIT</h5>
-       <form class="row m-auto container text-center" (ngSubmit)="buscarEmpCuit( buscarCuitForm )" #buscarCuitForm="ngForm" novalidate>
-        <div class="col-9 col-md-10 m-auto form-floating">
-          <input type="text" class="form-control" placeholder="Ingrese su D.N.I" ngModel name="cuit" id="floatingInputCuit" required>
-          <label for="floatingInputCuit">Ingrese CUIT</label>
+  <div class="m-auto row" id="search-section">
+    <h3 class="pb-2 mb-2">Información de la empresa</h3>
+    
+    <h5>Buscar por CUIT</h5>
+    <form class="row m-auto container text-center" (ngSubmit)="buscarEmpCuit( buscarCuitForm )" #buscarCuitForm="ngForm" novalidate>
+      <div class="col-9 col-md-10 m-auto form-floating">
+        <input type="text" class="form-control" placeholder="Ingrese su D.N.I" ngModel name="cuit" id="floatingInputCuit" required>
+        <label for="floatingInputCuit">Ingrese CUIT</label>
+      </div>
+      <div class="col-3 col-md-2 m-auto">
+        <button class="btn btn-success">
+          <i class="bi bi-search"></i> Buscar
+        </button>
+      </div>
+    </form>
+    
+    <div *ngIf="info == 0; then dataBlock else secondBlock" class="my-4"></div>
+    <ng-template #dataBlock>
+      <div class="container row m-auto my-4" *ngIf="info == 0">
+        <h3>Datos</h3>
+        <div class="col-12 col-md-5 p-2">
+          <label for=""><b>Cuit:</b> {{empresa.cuit}}</label>
+          <br>
+          <label for=""><b>Razon Social:</b> {{empresa.razonsocial}}</label>
+          <br>
+          <label for=""><b>Contacto:</b> {{empresa.contacto}} </label>
         </div>
-        <div class="col-3 col-md-2 m-auto">
-          <button class="btn btn-success">
-            <i class="bi bi-search"></i> Buscar
-          </button>
+        <div class="col-12 col-md-5 p-2">
+          <label for=""><b>Tel:</b> {{empresa.telefono}}</label>
+          <br>
+          <label for=""><b>Direccion:</b> {{empresa.domicilio}} </label>
+          <br>
+          <label for=""><b>Mail:</b> {{empresa.mail}} </label>
         </div>
-       </form>
-<!-- 
-       <h5>Buscar por ID</h5>
-       <form class="row" (ngSubmit)="buscarEmpId( buscarIdForm )" #buscarIdForm="ngForm" novalidate>
-        <div class="col-9 m-auto form-floating">
-          <input type="text" class="form-control" placeholder="Ingrese su ID" ngModel name="id" id="floatingInputId" required>
-          <label for="floatingInputCuit">Ingrese ID</label>
-        </div>
-        <div class="col-3 m-auto">
-          <button class="btn btn-success">
-            <i class="bi bi-search"></i> Buscar
-          </button>
-        </div>
-       </form> -->
-
-       <div class="container row m-auto my-4" *ngIf="info; else elseBlock">
-         <h3>Datos</h3>
-         <div class="col-12 col-md-5 p-2">
-           <label for=""><b>Cuit:</b> {{empresa.cuit}}</label>
-           <br>
-           <label for=""><b>Razon Social:</b> {{empresa.razonsocial}}</label>
-           <br>
-           <label for=""><b>Contacto:</b> {{empresa.contacto}} </label>
-         </div>
-         <div class="col-12 col-md-5 p-2">
-           <label for=""><b>Tel:</b> {{empresa.telefono}}</label>
-           <br>
-           <label for=""><b>Direccion:</b> {{empresa.domicilio}} </label>
-           <br>
-           <label for=""><b>Mail:</b> {{empresa.mail}} </label>
-         </div>
-       </div>
-       <ng-template #elseBlock class="my-4">
+      </div>
+    </ng-template>
+    <ng-template #secondBlock>
+      <div *ngIf="info === 1" class="alert alert-danger my-4 w-75 m-auto text-center" role="alert">
+        <p class="text-center m-auto my-1">
+          No se encontró la empresa
+        </p>
         <app-nueva-empresa-modal></app-nueva-empresa-modal>
-      </ng-template>
-      <hr class="pb-3 mt-1 m-auto my-4 container">
-     </div>
-   </section>
+      </div>
+      <div *ngIf="info === -1" class="alert alert-info my-4 w-50 m-auto" role="alert">
+        <p class="text-center m-auto">
+          Por favor realice una busqueda
+        </p>
+      </div>
+    </ng-template>
+  </div>
+  <hr class="pb-3 mt-1 m-auto my-4 container">
+</section>
 
-   <app-upload-file *ngIf="info"></app-upload-file>
-
-   <app-download-file *ngIf="info"></app-download-file>
+<app-upload-file *ngIf="info == 0"></app-upload-file>
