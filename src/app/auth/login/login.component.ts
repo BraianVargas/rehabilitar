@@ -43,7 +43,7 @@ export class LoginComponent {
 
         this.loginService.inLogin();
 
-        this.router.navigate([ 'index' ]);
+        this.router.navigate([ 'home/index' ]);
       }
     )
 

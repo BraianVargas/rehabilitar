@@ -4,18 +4,9 @@ import { LoginComponent } from './auth/login/login.component';
 import { IndexComponent } from './components/index/index.component';
 
 const routes: Routes = [
-  { 
-    path: '',
-    component: LoginComponent, pathMatch: 'full' 
-  },
-  { 
-    path: 'index',
-    component: IndexComponent 
-  },
-  { 
-    path: '**',
-    redirectTo: ''
-   }
+  { path: 'auth', loadChildren: () => import('./auth/auth.module').then( m => m.AuthModule ) },
+  { path: 'home', loadChildren: () => import('./components/home.module').then( m => m.HomeModule ) },
+  { path: '**', redirectTo: 'auth' }
 ];
 
 @NgModule({
