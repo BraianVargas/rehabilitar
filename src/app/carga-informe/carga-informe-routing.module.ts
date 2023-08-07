@@ -4,8 +4,8 @@ import { IndexComponent } from './index/index.component';
 
 const routes: Routes = [
   {
-    path: '',
-    children: [
+    path:'',
+    children :[
       { path: 'index', component: IndexComponent },
       { path: '**', redirectTo: 'index' }
     ]
@@ -16,4 +16,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class HomeRoutingModule { }
+export class CargaInformeRoutingModule { }
