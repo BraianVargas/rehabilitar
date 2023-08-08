@@ -1,0 +1,21 @@
+.main-container{
+     border-radius: 2em;
+}
+body {
+     font-family: Arial, sans-serif;
+}
+
+.menu-item {
+     border-radius: 1.5em 0 0 1.5em;
+     font-weight: 700;
+     text-align: center;
+     cursor: pointer;
+}
+.menu-content {
+     padding: 20px;
+}
+.menu-content{
+     border-radius: 0 15px 15px 0;
+     border-left: 2px solid gray;
+     box-shadow: -15px -1px 17px -23px rgba(179,179,179,1);
+}
