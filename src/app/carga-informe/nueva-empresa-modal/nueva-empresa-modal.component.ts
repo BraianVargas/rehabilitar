@@ -11,8 +11,6 @@ import { CompanyService } from 'src/app/services/company.service';
 })
 export class NuevaEmpresaModalComponent {
   empresa = new Empresa('', '', '', '', '', '', 0);
-  showToast = false;
-  newVar:sub;
   constructor(
     private companyService: CompanyService
   ) {}
@@ -23,7 +21,7 @@ export class NuevaEmpresaModalComponent {
 
     console.log( this.empresa );
     
-    this.newVar = this.companyService.newCompany( this.empresa ).subscribe({
+    this.companyService.newCompany( this.empresa ).subscribe({
       next: (data) => { console.log(data);}
     });
 
