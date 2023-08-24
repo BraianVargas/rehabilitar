@@ -1,58 +1,77 @@
 <!-- Button trigger modal -->
 <div class="text-center">
-  <button type="button" class="btn btn-outline-primary my-4"
-    data-bs-toggle="modal" data-bs-target="#nuevaEmpresaModal">
+  <button type="button" class="btn btn-outline-primary my-4" data-bs-toggle="modal" data-bs-target="#nuevaEmpresaModal">
     Ingresar Nueva Empresa
   </button>
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="nuevaEmpresaModal"
-  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="nuevaEmpresaModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
 
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-    <div class="modal-content bg-secondary">
-      <div class="modal-header bg-dark">
-        <h1 class="modal-title fs-5 text-white" id="nuevaEmpresaModalLabel">Cargar Nueva Empresa</h1>
-        <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body bg-color5">
-        <form>
+    <div class="modal-content bg-white">
+      <form (ngSubmit)="nuevaEmpresa( nuevaEmpresaForm )" #nuevaEmpresaForm="ngForm" novalidate>
+        <div class="modal-header bg-dark">
+          <h1 class="modal-title fs-5 text-white" id="nuevaEmpresaModalLabel">Cargar Nueva Empresa</h1>
+          <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body bg-color5">
           <div class="mb-3">
             <label for="cuit" class="col-form-label">Cuit:</label>
-            <input type="text" class="form-control" id="cuit" placeholder="20-12345678-1">
+            <input type="text" class="form-control" id="cuit" placeholder="20-XXXXXXXX-X" ngModel name="cuit" required>
           </div>
           <div class="mb-3">
             <label for="razonsocial" class="col-form-label">Razon Social:</label>
-            <input type="text" class="form-control" id="razonsocial" placeholder="Razon Social">
+            <input type="text" class="form-control" id="razonsocial" placeholder="Razon Social" ngModel
+              name="razonsocial" required>
           </div>
           <div class="mb-3">
             <label for="domicilio" class="col-form-label">Domicilio:</label>
-            <input type="text" class="form-control" id="domicilio" placeholder="Domicilio Real 123 (o)">
+            <input type="text" class="form-control" id="domicilio" placeholder="Domicilio Real 123 (o)" ngModel
+              name="domicilio" required>
           </div>
           <div class="mb-3">
             <label for="mail" class="col-form-label">Mail:</label>
-            <input type="mail" class="form-control" id="mail" placeholder="ejemplo@test.com">
+            <input type="mail" class="form-control" id="mail" placeholder="ejemplo@test.com" ngModel name="mail"
+              required>
           </div>
           <div class="mb-3">
             <label for="telefono" class="col-form-label">Telefono:</label>
-            <input type="number" class="form-control" id="telefono" placeholder="264-1234567">
+            <input type="number" class="form-control" id="telefono" placeholder="264-XXXXXXX" ngModel name="telefono"
+              required>
           </div>
           <div class="mb-3">
             <label for="contacto" class="col-form-label">Contacto:</label>
-            <input type="text" class="form-control" id="contacto" placeholder="Contacto">
+            <input type="text" class="form-control" id="contacto" placeholder="Contacto" ngModel name="contacto"
+              required>
           </div>
-        </form>
-      </div>
-      <div class="modal-footer bg-dark">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
-          Cancelar
-          <i class="bi bi-x-circle"></i>
-        </button>
-        <button type="button" class="btn btn-success">
-          Guardar
-          <i class="bi bi-save"></i>
-        </button>
+        </div>
+        <div class="modal-footer bg-dark">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+            Cancelar
+            <i class="bi bi-x-circle"></i>
+          </button>
+          <button type="submit" [disabled]="nuevaEmpresaForm.invalid" class="btn btn-success">
+            Guardar
+            <i class="bi bi-save"></i>
+          </button>
+        </div>
+      </form>
+
+      
+      <div class="toast-container position-fixed bottom-0 end-0 p-3" [ngClass]="{'toastClass': showToast}">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="toast-header">
+            <img src="..." class="rounded me-2" alt="...">
+            <strong class="me-auto">Bootstrap</strong>
+            <small>11 mins ago</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+          <div class="toast-body">
+            Hello, world! This is a toast message.
+          </div>
+        </div>
       </div>
     </div>
   </div>

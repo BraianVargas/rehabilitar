@@ -11,49 +11,54 @@
   data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-    <div class="modal-content bg-secondary">
+    <div class="modal-content bg-white">
+      
       <div class="modal-header bg-dark">
         <h1 class="modal-title fs-5 text-white" id="nuevoPacienteModalLabel">Cargar Nuevo Paciente</h1>
         <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+      <form (ngSubmit)="nuevoPaciente( nuevoPacienteForm )" #nuevoPacienteForm="ngForm" novalidate>
       <div class="modal-body bg-color5">
-        <form>
           <div class="mb-3">
             <label for="lastname" class="col-form-label">Apellido/s:</label>
-            <input type="text" class="form-control" id="lastname" placeholder="Apellido/s">
+            <input type="text" class="form-control" id="lastname" placeholder="Apellido/s" ngModel name="apellidos" required>
           </div>
           <div class="mb-3">
             <label for="name" class="col-form-label">Nombre/s:</label>
-            <input type="text" class="form-control" id="name" placeholder="Nombre">
+            <input type="text" class="form-control" id="name" placeholder="Nombre" ngModel name="nombres" required>
           </div>
           <div class="mb-3">
             <label for="DNI" class="col-form-label">DNI:</label>
-            <input type="text" class="form-control" id="DNI" placeholder="20-12345678-1">
+            <input type="text" class="form-control" id="DNI" placeholder="20-XXXXXXX-X" ngModel name="documento" required>
           </div>
           <div class="mb-3">
             <label for="telefono" class="col-form-label">Telefono:</label>
-            <input type="number" class="form-control" id="telefono" placeholder="264-1234567">
+            <input type="number" class="form-control" id="telefono" placeholder="42XXXXX" ngModel name="telefono" required>
+          </div>
+          <div class="mb-3">
+            <label for="celular" class="col-form-label">Celular:</label>
+            <input type="number" class="form-control" id="celular" placeholder="264-XXXXXX" ngModel name="celular" required>
           </div>
           <div class="mb-3">
             <label for="domicilio" class="col-form-label">Domicilio:</label>
-            <input type="text" class="form-control" id="domicilio" placeholder="Domicilio Real 123 (o)">
+            <input type="text" class="form-control" id="domicilio" placeholder="Domicilio Real 123 (o)" ngModel name="domicilio" required>
           </div>
           <div class="mb-3">
             <label for="birthdate" class="col-form-label">Fecha de nacimiento:</label>
-            <input type="date" class="form-control" id="birthdate" placeholder="ejemplo@test.com">
+            <input type="date" class="form-control" id="birthdate" placeholder="ejemplo@test.com" ngModel name="fecha_nacimiento" required>
           </div>
-        </form>
-      </div>
-      <div class="modal-footer bg-dark">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
-          Cancelar
-          <i class="bi bi-x-circle"></i>
-        </button>
-        <button type="button" class="btn btn-success">
+        </div>
+        <div class="modal-footer bg-dark">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+            Cancelar
+            <i class="bi bi-x-circle"></i>
+          </button>
+          <button type="submit" [disabled]="nuevoPacienteForm.invalid" class="btn btn-success">
           Guardar
           <i class="bi bi-save"></i>
         </button>
       </div>
+    </form>
     </div>
   </div>
 </div>

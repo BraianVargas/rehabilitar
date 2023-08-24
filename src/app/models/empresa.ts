@@ -1,4 +1,4 @@
-export class Empresas {
+export class Empresa {
     cuit: string;
     razonsocial: string;
     domicilio: string;

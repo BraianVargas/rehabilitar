@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Empresas } from 'src/app/models/empresa';
+import { Empresa } from 'src/app/models/empresa';
 import { CompanyService } from 'src/app/services/company.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { CompanyService } from 'src/app/services/company.service';
   styleUrls: ['./info-empresas.component.css']
 })
 export class InfoEmpresasComponent {
-  empresa = new Empresas('','','','','','',0);
+  empresa = new Empresa('','','','','','',0);
   id: number = 0;
   cuit: string = '';
   info: number = -1;

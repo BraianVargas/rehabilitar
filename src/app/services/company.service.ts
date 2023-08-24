@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TokenService } from './token.service';
 import { Observable } from 'rxjs';
+import { Empresa } from '../models/empresa';
 
 @Injectable({
   providedIn: 'root'
@@ -58,5 +59,19 @@ export class CompanyService {
 
   public searchAll() {}
 
-  public newCompany() {}
+  public newCompany( empresa: Empresa ): Observable<any> {
+    const token = this.token.getToken();
+    const data = JSON.stringify({
+      'token': token,
+      'data': empresa
+    });
+
+    console.log( "DESDE SERVICES", data );
+    
+    return this.httpClient.post<any>('/empresas/new', data, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+  }
 }

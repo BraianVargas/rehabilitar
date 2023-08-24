@@ -1,0 +1,14 @@
+#info_contact{
+    padding: 1rem 0 !important;
+    background: #35373C;
+    
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+}
+.mt-n-1 {
+    margin-top: -1rem !important;
+}
