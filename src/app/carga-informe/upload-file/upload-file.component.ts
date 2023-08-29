@@ -63,7 +63,6 @@ export class UploadFileComponent {
       },
       error: (err: HttpErrorResponse) => {
         console.log(err);
-        
       },
       complete: () => {
         this.downloadFileLink = 'http://vctest.dyndns.org:8081/informes/' + this.reportService.getFileToken();

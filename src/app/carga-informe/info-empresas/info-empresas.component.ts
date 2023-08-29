@@ -32,8 +32,8 @@ export class InfoEmpresasComponent {
             this.showData(1);
           }else{
             this.showData(0);
+            this.companyService.setData( this.empresa.id );
           }
-          this.companyService.setData( this.empresa.id );
         }
       }
     );

@@ -16,6 +16,7 @@ import { LoginComponent } from './auth/login/login.component';
 // import { DownloadFileComponent } from './components/download-file/download-file.component';
 import { TemplatesModule } from './templates/templates.module';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { ToastrModule, ToastNoAnimation, ToastNoAnimationModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -45,7 +46,14 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    TemplatesModule
+    TemplatesModule,
+    ToastNoAnimationModule.forRoot(
+      {
+        positionClass:'toast-bottom-right', 
+        timeOut:3500,
+        progressBar: true
+      }
+    )  
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy }
