@@ -48,7 +48,7 @@ export class UploadFileComponent {
         'empresa': this.companyService.getIdEmpresa()
       }
     });
-
+    
     const formData2 = new FormData();
 
     Array.prototype.forEach.call( this.files, (file: File) => {
